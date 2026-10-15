@@ -4,27 +4,41 @@ const set = (k,v) => localStorage.setItem(k,JSON.stringify(v));
 function toast(msg){let t=document.querySelector(".toast");if(!t){t=document.createElement("div");t.className="toast";document.body.appendChild(t)}t.textContent=msg;setTimeout(()=>t.remove(),2600)}
 function refreshStats(){const p=get(STORE.points,0), l=get(STORE.level,"A1"), d=get(STORE.done,0), u=get(STORE.user,null);["home-points","points-big"].forEach(id=>{let e=document.getElementById(id);if(e)e.textContent=p+" XP"});["home-level","progress-level","profile-level","level-label"].forEach(id=>{let e=document.getElementById(id);if(e)e.textContent=l});let e=document.getElementById("lessons-done");if(e)e.textContent=d;let f=document.getElementById("progress-fill");if(f)f.style.width=Math.min(100,p%500/5)+"%";let c=document.getElementById("progress-copy");if(c)c.textContent=p+" XP کۆکراوەتەوە";let n=document.getElementById("profile-name");if(n)n.textContent=u?.username||"میوان"}
 refreshStats();
+
 document.querySelectorAll("[data-level]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-level]").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");set(STORE.level,b.dataset.level);let l=document.getElementById("level-label");if(l)l.textContent=b.dataset.level;refreshStats()}));
 
-/* بەشی دەنگەکە لێرەدا چارەسەر کرا بە گۆڕینی rate و pitch */
 document.querySelectorAll("[data-say]").forEach(b=>b.addEventListener("click",()=>{if("speechSynthesis" in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(b.dataset.say);u.lang="en-US";u.rate=0.95;u.pitch=1;speechSynthesis.speak(u)}else toast("دەنگی خوێندنەوە لەم وێبگەڕەدا بەردەست نییە.")}));
 
-document.getElementById("finish-listening")?.addEventListener("click",()=>{if(!get("ziman_listening_done",false)){set(STORE.points,get(STORE.points,0)+20);set(STORE.done,get(STORE.done,0)+1);set("ziman_listening_done",true);toast("وانەکە تەواو بوو! ٢٠ خاڵت وەرگرت.");refreshStats()}else toast("ئەم وانەیە پێشتر تەواو کردووە.")});
-document.getElementById("login-form")?.addEventListener("submit",e=>{e.preventDefault();const username=document.getElementById("username").value.trim();set(STORE.user,{username});document.getElementById("profile-name").textContent=username;toast("ناوی بەکارهێنەر لەم ئامێرەدا هەڵگیرا. ئەمە هەژماری سێرڤەری نییە.")});
-document.getElementById("logout")?.addEventListener("click",()=>{localStorage.removeItem(STORE.user);const n=document.getElementById("profile-name");if(n)n.textContent="میوان";toast("ناوی هەژمار لەم ئامێرە پاککرایەوە.")});
-document.querySelectorAll(".answer-list button").forEach(b=>b.addEventListener("click",()=>{const all=[...document.querySelectorAll(".answer-list button")];all.forEach(x=>x.disabled=true);if(b.dataset.correct==="true"){b.classList.add("correct");document.getElementById("quiz-feedback").textContent="وەڵامی دروستە! +١٥ XP";if(!get("ziman_quiz_done",false)){set(STORE.points,get(STORE.points,0)+15);set("ziman_quiz_done",true);refreshStats()}}else{b.classList.add("wrong");document.querySelector('[data-correct="true"]')?.classList.add("correct");document.getElementById("quiz-feedback").textContent="هەوڵێکی تر؛ وەڵامی دروست «سڵاو» بوو."}const n=document.getElementById("next-question");if(n)n.hidden=false}));
-document.getElementById("next-question")?.addEventListener("click",()=>toast("ئەمە تاقیکردنەوەی نموونەییە؛ پرسیارەکانی تر دەتوانین زیاد بکەین."));
-document.getElementById("translate-btn")?.addEventListener("click",()=>{const v=document.getElementById("source-text").value.trim();const r=document.getElementById("translation-result");r.textContent=v?("وشە/ڕستەی تۆ: "+v+" — بۆ وەرگێڕانی ڕاستەقینە پێویستە خزمەتگوزاریی وەرگێڕان پەیوەست بکرێت."):"تکایە وشە یان ڕستەیەک بنووسە."});
-document.getElementById("plan-form")?.addEventListener("submit",e=>{e.preventDefault();const plan={level:document.getElementById("current-level").value,minutes:document.getElementById("daily-time").value,words:document.getElementById("daily-words").value};set(STORE.plan,plan);set(STORE.level,plan.level);const box=document.getElementById("plan-result");box.hidden=false;box.innerHTML=`<h3>پلانی ڕۆژانەت ئامادەیە 🎉</h3><ul class="plan-list"><li>🎧 ${Math.max(5,Math.round(plan.minutes*.35))} خولەک گوێگرتن</li><li>📖 فێربوونی ${plan.words} وشەی نوێ</li><li>📝 ${Math.max(5,Math.round(plan.minutes*.3))} خولەک وانە و ڕێزمان</li><li>🧠 تاقیکردنەوەی کورت لە کۆتایی</li></ul>`;refreshStats();toast("پلانی فێربوونت هەڵگیرا.")});
+// چوونە پەڕەی تاقیکردنەوە ڕاستەوخۆ دوای تەواوکردنی گوێگرتن
+document.getElementById("finish-listening")?.addEventListener("click",()=>{
+    if(!get("ziman_listening_done",false)){
+        set(STORE.points,get(STORE.points,0)+20);
+        set(STORE.done,get(STORE.done,0)+1);
+        set("ziman_listening_done",true);
+        refreshStats();
+    }
+    window.location.href = "quiz.html";
+});
+
+document.getElementById("login-form")?.addEventListener("submit",e=>{e.preventDefault();const username=document.getElementById("username").value.trim();set(STORE.user,{username});document.getElementById("profile-name").textContent=username;toast("ناوی بەکارهێنەر لەم ئامێرەدا هەڵگیرا.")});
+document.getElementById("logout")?.addEventListener("click",()=>{localStorage.removeItem(STORE.user);const n=document.getElementById("profile-name");if(n)n.textContent="میوان";toast("ناوی هەژمار پاککرایەوە.")});
+
+document.querySelectorAll(".answer-list button").forEach(b=>b.addEventListener("click",()=>{const all=[...document.querySelectorAll(".answer-list button")];all.forEach(x=>x.disabled=true);if(b.dataset.correct==="true"){b.classList.add("correct");document.getElementById("quiz-feedback").textContent="وەڵامی دروستە! +١٥ XP";if(!get("ziman_quiz_done",false)){set(STORE.points,get(STORE.points,0)+15);set("ziman_quiz_done",true);refreshStats()}}else{b.classList.add("wrong");document.querySelector('[data-correct="true"]')?.classList.add("correct");document.getElementById("quiz-feedback").textContent="هەوڵێکی تر بدە."}const n=document.getElementById("next-question");if(n)n.hidden=false}));
+
+// گەڕانەوە بۆ وانەکان دوای تەواوکردنی تاقیکردنەوە
+document.getElementById("next-question")?.addEventListener("click",()=> {
+    window.location.href = "lessons.html";
+});
+
+document.getElementById("translate-btn")?.addEventListener("click",()=>{const v=document.getElementById("source-text").value.trim();const r=document.getElementById("translation-result");r.textContent=v?("وشە/ڕستەی تۆ: "+v+" — پێویستی بە API هەیە."):"تکایە وشەیەک بنووسە."});
+document.getElementById("plan-form")?.addEventListener("submit",e=>{e.preventDefault();const plan={level:document.getElementById("current-level").value,minutes:document.getElementById("daily-time").value,words:document.getElementById("daily-words").value};set(STORE.plan,plan);set(STORE.level,plan.level);const box=document.getElementById("plan-result");box.hidden=false;box.innerHTML=`<h3>پلانی ڕۆژانەت ئامادەیە 🎉</h3><ul class="plan-list"><li>🎧 ${Math.max(5,Math.round(plan.minutes*.35))} خولەک گوێگرتن</li><li>📖 فێربوونی ${plan.words} وشە</li><li>📝 ${Math.max(5,Math.round(plan.minutes*.3))} خولەک ڕێزمان</li><li>🧠 تاقیکردنەوە</li></ul>`;refreshStats();toast("پلانی فێربوونت هەڵگیرا.")});
+
 const canvas=document.getElementById("whiteboard");
 if(canvas){const ctx=canvas.getContext("2d");let drawing=false;function resize(){const dpr=window.devicePixelRatio||1;const old=document.createElement("canvas");old.width=canvas.width;old.height=canvas.height;old.getContext("2d").drawImage(canvas,0,0);canvas.width=canvas.clientWidth*dpr;canvas.height=canvas.clientHeight*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineCap="round";ctx.lineJoin="round";if(old.width&&old.height)ctx.drawImage(old,0,0,old.width,old.height,0,0,canvas.clientWidth,canvas.clientHeight)}resize();window.addEventListener("resize",resize);function pos(e){const r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}canvas.addEventListener("pointerdown",e=>{drawing=true;canvas.setPointerCapture(e.pointerId);const p=pos(e);ctx.beginPath();ctx.moveTo(p.x,p.y)});canvas.addEventListener("pointermove",e=>{if(!drawing)return;const p=pos(e);ctx.strokeStyle=document.getElementById("pen-color").value;ctx.lineWidth=Number(document.getElementById("pen-size").value);ctx.lineTo(p.x,p.y);ctx.stroke()});["pointerup","pointercancel","lostpointercapture"].forEach(ev=>canvas.addEventListener(ev,()=>drawing=false));document.getElementById("clear-board").addEventListener("click",()=>ctx.clearRect(0,0,canvas.width,canvas.height))}
-// پاشەکەوتکردنی زمانی هەڵبژێردراو
-const langSelect = document.getElementById("language");
-if (langSelect) {
-  const savedLang = get("ziman_lang", "ئینگلیزی");
-  langSelect.value = savedLang;
 
-  langSelect.addEventListener("change", (e) => {
-    set("ziman_lang", e.target.value);
-  });
+// پاشەکەوتکردنی هەڵبژاردەی زمان
+const langSelect = document.getElementById("language");
+if(langSelect){
+    langSelect.value = get("ziman_lang", "ئینگلیزی");
+    langSelect.addEventListener("change", (e)=> set("ziman_lang", e.target.value));
 }
