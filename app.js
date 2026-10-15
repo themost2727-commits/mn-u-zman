@@ -18,3 +18,13 @@ document.getElementById("translate-btn")?.addEventListener("click",()=>{const v=
 document.getElementById("plan-form")?.addEventListener("submit",e=>{e.preventDefault();const plan={level:document.getElementById("current-level").value,minutes:document.getElementById("daily-time").value,words:document.getElementById("daily-words").value};set(STORE.plan,plan);set(STORE.level,plan.level);const box=document.getElementById("plan-result");box.hidden=false;box.innerHTML=`<h3>پلانی ڕۆژانەت ئامادەیە 🎉</h3><ul class="plan-list"><li>🎧 ${Math.max(5,Math.round(plan.minutes*.35))} خولەک گوێگرتن</li><li>📖 فێربوونی ${plan.words} وشەی نوێ</li><li>📝 ${Math.max(5,Math.round(plan.minutes*.3))} خولەک وانە و ڕێزمان</li><li>🧠 تاقیکردنەوەی کورت لە کۆتایی</li></ul>`;refreshStats();toast("پلانی فێربوونت هەڵگیرا.")});
 const canvas=document.getElementById("whiteboard");
 if(canvas){const ctx=canvas.getContext("2d");let drawing=false;function resize(){const dpr=window.devicePixelRatio||1;const old=document.createElement("canvas");old.width=canvas.width;old.height=canvas.height;old.getContext("2d").drawImage(canvas,0,0);canvas.width=canvas.clientWidth*dpr;canvas.height=canvas.clientHeight*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineCap="round";ctx.lineJoin="round";if(old.width&&old.height)ctx.drawImage(old,0,0,old.width,old.height,0,0,canvas.clientWidth,canvas.clientHeight)}resize();window.addEventListener("resize",resize);function pos(e){const r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}canvas.addEventListener("pointerdown",e=>{drawing=true;canvas.setPointerCapture(e.pointerId);const p=pos(e);ctx.beginPath();ctx.moveTo(p.x,p.y)});canvas.addEventListener("pointermove",e=>{if(!drawing)return;const p=pos(e);ctx.strokeStyle=document.getElementById("pen-color").value;ctx.lineWidth=Number(document.getElementById("pen-size").value);ctx.lineTo(p.x,p.y);ctx.stroke()});["pointerup","pointercancel","lostpointercapture"].forEach(ev=>canvas.addEventListener(ev,()=>drawing=false));document.getElementById("clear-board").addEventListener("click",()=>ctx.clearRect(0,0,canvas.width,canvas.height))}
+// پاشەکەوتکردنی زمانی هەڵبژێردراو
+const langSelect = document.getElementById("language");
+if (langSelect) {
+  const savedLang = get("ziman_lang", "ئینگلیزی");
+  langSelect.value = savedLang;
+
+  langSelect.addEventListener("change", (e) => {
+    set("ziman_lang", e.target.value);
+  });
+}
