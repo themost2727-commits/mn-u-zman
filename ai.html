@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مامۆستای AI</title>
+    <link rel="stylesheet" href="ai.css">
+</head>
+<body>
+
+    <!-- ١. پەنجەرەی پێشەکی بۆ دیاریکردنی ناوی مامۆستا (پێش چات) -->
+    <div id="setup-container" class="setup-overlay">
+        <div class="setup-box">
+            <div class="input-row">
+                <input type="text" id="ai-name-input" placeholder="مامۆستا">
+                <div class="btn-change">گۆڕینی ناوی AI</div>
+            </div>
+            
+            <button id="save-btn" class="save-button">Save</button>
+        </div>
+    </div>
+
+    <!-- ٢. بەشی چات (کە دوای Save کردن بەدیار دەکەوێت) -->
+    <div id="chat-container" class="chat-wrapper hidden">
+        <header class="chat-header">
+            <button class="back-btn" onclick="window.location.href='index.html'">〈</button>
+            <div class="header-info">
+                <span class="ai-avatar">🤖</span>
+                <span id="display-ai-name" class="ai-title">مامۆستا</span>
+            </div>
+            <div></div> <!-- بۆ ڕێکخستنی هاوسەنگی -->
+        </header>
+
+        <div class="chat-messages" id="chat-box">
+            <div class="message ai">سڵاو! من مامۆستا زیرەکەکەی تۆم لێرە. هەر پرسیارێکت هەیە لەسەر زمانی ئەڵمانی یان وانەکان لێم بپرسە.</div>
+        </div>
+
+        <div class="chat-input-area">
+            <input type="text" id="message-input" placeholder="نامەیەک بنووسە...">
+            <button id="send-btn">ناردن</button>
+        </div>
+    </div>
+
+    <script src="ai.js"></script>
+</body>
+</html>
