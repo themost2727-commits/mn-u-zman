@@ -1,28 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ckb" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>زمانی من | پلاتفۆرمی فێربوونی زمان</title><link rel="stylesheet" href="style.css">
-</head><body>
-<header class="topbar"><a class="brand" href="index.html"><span class="brandmark">ز</span><span>زمانی من<small>فێربوون بە گوێگرتن</small></span></a><div class="top-actions"><button class="icon-btn" aria-label="ئاگادارکردنەوە">♧</button><a class="avatar" href="profile.html">👤</a></div></header>
-<main class="container">
-<section class="hero"><div class="hero-copy"><p class="eyebrow">پلاتفۆرمی فێربوونی زمان</p><h1>بەخێربێیت! <span>👋</span></h1><p>هەنگاوێک لە ئەمڕۆ، نزیکتر لە ئامانجەکەت.</p><a class="btn btn-light" href="lessons.html">دەستپێکردنی فێربوون ←</a></div><div class="hero-art" aria-hidden="true"><div class="sun"></div><div class="mountain m1"></div><div class="mountain m2"></div><div class="book">A<span>ب</span></div></div></section>
-<section class="stats-grid">
-<article class="stat-card"><span class="stat-icon">⭐</span><div><small>کۆی خاڵەکان</small><strong id="home-points">0 XP</strong></div></article>
-<article class="stat-card"><span class="stat-icon">📘</span><div><small>ئاستی ئێستا</small><strong id="home-level">A1</strong></div></article>
-<article class="stat-card"><span class="stat-icon">🎯</span><div><small>ئەرکی ئەمڕۆ</small><strong>٣ ئەرک</strong></div></article>
-</section>
-<section class="section-head"><div><p class="eyebrow">بە ئاسانی دەست پێ بکە</p><h2>بەشە خێراکان</h2></div></section>
-<section class="quick-grid">
-<a class="quick-card lilac" href="lessons.html"><span>📚</span><strong>وانەکان</strong><small>ئاستی A1 تا C2</small></a>
-<a class="quick-card mint" href="listening.html"><span>🎧</span><strong>گوێگرتن</strong><small>فێربوون بە دەنگ</small></a>
-<a class="quick-card blue" href="quiz.html"><span>🧠</span><strong>تاقیکردنەوە</strong><small>تاقی خۆت بکەرەوە</small></a>
-<a class="quick-card peach" href="translator.html"><span>🌐</span><strong>وەرگێڕان</strong><small>وشە و ڕستە</small></a>
-</section>
-<section class="section-head"><div><p class="eyebrow">بۆ ئەمڕۆ</p><h2>ئەرکی ڕۆژانە</h2></div><a class="text-link" href="progress.html">بینینی هەموو ←</a></section>
-<section class="task-card"><div class="task-icon">🎧</div><div class="task-info"><h3>گوێگرتن لە ڕستەکان</h3><p>گوێ لە ڕستە سادەکان بگرە و واتاکانیان تێبگە.</p><div class="task-meta"><span class="pill">A1</span><span>⏱ ٥ خولەک</span><span>+٢٠ XP</span></div></div><a class="round-arrow" href="listening.html" aria-label="کردنەوە">←</a></section>
-<section class="section-head"><div><p class="eyebrow">شوێنی خۆت هەڵبژێرە</p><h2>ئامرازەکانی فێربوون</h2></div></section>
-<section class="tools-grid"><a class="tool-card" href="whiteboard.html"><span>✍️</span><strong>وایت‌بۆرد</strong><small>نووسین و کێشان، بەبێ پاشەکەوت</small></a><a class="tool-card" href="plan.html"><span>🗓️</span><strong>پلانی فێربوون</strong><small>ڕێکخستنی وانە و ئەرکەکان</small></a><a class="tool-card" href="progress.html"><span>🏆</span><strong>پێشکەوتن</strong><small>خاڵ و وانە تەواوکراوەکان</small></a></section>
-</main>
-<nav class="bottom-nav"><a class="active" href="index.html"><span>⌂</span>سەرەکی</a><a href="lessons.html"><span>▤</span>وانەکان</a><a href="listening.html"><span>♬</span>گوێگرتن</a><a href="progress.html"><span>🏆</span>پێشکەوتن</a><a href="profile.html"><span>♙</span>پڕۆفایل</a></nav>
-<script src="app.js"></script></body></html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زمانی من - سەرەکی</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- نوارەی سەرەوە (بە پێچەوانەی ئاراستەی عەرەبی/کوردی دامانناوە بۆ ئەوەی وەک وێنەکەی لێبێت) -->
+    <header class="top-bar">
+        <!-- گێڕی ڕێکخستن لە لای ڕاست -->
+        <div class="top-icon settings">⚙️</div>
+        
+        <!-- ئاڵا و ئاست لە لای چەپ -->
+        <div class="left-icons">
+            <div class="top-icon flag" id="lang-flag">🪵</div> <!-- ئاست (سەرەتا دارە) -->
+            <div class="top-icon diamond" id="country-flag">🇩🇪</div> <!-- ئاڵا -->
+        </div>
+    </header>
+
+    <!-- بەشی پڕۆفایل و XP -->
+    <section class="profile-section">
+        <div class="profile-pic">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=patrik" alt="وێنەی پڕۆفایل">
+        </div>
+        <div class="profile-details">
+            <h2 class="username">patrik jane</h2>
+            <div class="xp-container">
+                <span class="xp-text">XP</span>
+                <div class="xp-bar-bg">
+                    <div class="xp-fill" id="xp-progress" style="width: 20%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- دوگمە هەڵواسراوەکانی تەنیشت -->
+    <button class="side-btn ai-btn">
+        <span class="ai-logo">⋈</span>
+    </button>
+    <button class="side-btn pen-btn">
+        <span>✍️</span>
+    </button>
+
+    <!-- بەشی ناوەڕاست (مەتاهە و دوگمەکان) -->
+    <main class="main-content">
+        <!-- مەتاهەکە (بێ کلیک) -->
+        <div class="maze-card">
+            <!-- لێرەدا دەتوانیت وێنەی مەتاهەکەت دابنێیت -->
+            <div class="maze-placeholder">
+                <img src="maze.png" alt="Maze" style="width: 150px; opacity: 0.8;"> <!-- ئەگەر وێنەی مەتاهەت هەیە ناوی بنێ maze.png -->
+            </div>
+            <p class="maze-text">کاتێک دەڕێژیت لەم مەیزە کە بگەیت بە ئامانجەکەت</p>
+        </div>
+
+        <!-- دوگمەی خوێندن -->
+        <button class="btn-primary big-btn">خوێندن</button>
+
+        <!-- دوگمەی پلان و ئەرک -->
+        <button class="btn-primary">پلان و ئەرکی ڕۆژانەت</button>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
