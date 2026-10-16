@@ -1,1 +1,43 @@
-<!doctype html><html lang="ckb" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>وایت‌بۆرد | زمانی من</title><link rel="stylesheet" href="style.css"></head><body><header class="page-header"><a class="back" href="index.html">→</a><div><small>بنوسە و بکێشە</small><h1>وایت‌بۆرد</h1></div><span class="header-emoji">✍️</span></header><main class="container page-container"><section class="panel"><p class="muted">ئەم وایت‌بۆردە هیچ شتێک پاشەکەوت ناکات؛ بە گۆڕینی پەڕە، نووسینەکان دەسڕێنەوە.</p><div class="board-tools"><label>ڕەنگ <input id="pen-color" type="color" value="#24213a"></label><label>قەڵەم <input id="pen-size" type="range" min="1" max="12" value="3"></label><button id="clear-board" class="btn btn-outline">پاککردنەوە</button></div><canvas id="whiteboard" aria-label="وایت‌بۆرد"></canvas></section></main><nav class="bottom-nav"><a href="index.html"><span>⌂</span>سەرەکی</a><a href="lessons.html"><span>▤</span>وانەکان</a><a href="listening.html"><span>♬</span>گوێگرتن</a><a href="progress.html"><span>🏆</span>پێشکەوتن</a><a href="profile.html"><span>♙</span>پڕۆفایل</a></nav><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>وایتبۆرد</title>
+    <link rel="stylesheet" href="whiteboard.css">
+</head>
+<body>
+
+    <!-- نوارەی سەرەوە -->
+    <header class="wb-topbar">
+        <div class="wb-left">
+            <button class="icon-btn">〈</button>
+            <button class="icon-btn" id="undo-btn">↺</button>
+        </div>
+        <div class="wb-title">وایتبۆرد</div>
+        <div class="wb-right">
+            <button class="icon-btn">⍗</button>
+            <button class="icon-btn">⧉</button>
+            <button class="icon-btn">✎</button>
+            <button class="text-btn">ئامادەیە</button>
+        </div>
+    </header>
+
+    <!-- شاشەی وێنەکێشان -->
+    <div class="canvas-container">
+        <canvas id="drawing-board"></canvas>
+        
+        <!-- نوارەی ئامرازەکان لە خوارەوە -->
+        <div class="wb-toolbar">
+            <button class="tool active" data-tool="pen">✏️</button>
+            <button class="tool" data-tool="marker">🖍️</button>
+            <button class="tool" data-tool="eraser">🧽</button>
+            <div class="divider"></div>
+            <input type="color" id="color-picker" value="#000000">
+            <input type="range" id="size-slider" min="1" max="50" value="5">
+        </div>
+    </div>
+
+    <script src="whiteboard.js"></script>
+</body>
+</html>
