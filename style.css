@@ -3,23 +3,21 @@ body {
     margin: 0;
     padding: 0;
     font-family: system-ui, -apple-system, sans-serif;
-    /* پاشبنەماکەی خۆت دابنێ */
-    background: url('bg.JPG') no-repeat center center fixed, #11092a; 
+    background: url('bg.png') no-repeat center center fixed, #11092a; 
     background-size: cover;
     color: white;
     direction: rtl;
     min-height: 100vh;
     overflow-x: hidden;
-    position: relative;
 }
 
 /* نوارەی سەرەوە */
 .top-bar {
     display: flex;
-    justify-content: space-between; /* ڕاست و چەپ جیا دەکاتەوە */
+    justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    direction: ltr; /* بۆ ئەوەی ڕێک وەک دیزاینەکەی تۆی لێبێت */
+    direction: ltr; 
 }
 
 .left-icons {
@@ -30,7 +28,7 @@ body {
 .top-icon {
     width: 45px;
     height: 45px;
-    background: #6200ea; /* مۆری تۆخ */
+    background: #6200ea;
     border-radius: 12px;
     display: flex;
     justify-content: center;
@@ -45,7 +43,7 @@ body {
     display: flex;
     align-items: center;
     padding: 0 20px;
-    direction: ltr; /* وێنە لە چەپ و ناو لە ڕاست */
+    direction: ltr; 
 }
 
 .profile-pic {
@@ -95,32 +93,10 @@ body {
 
 .xp-fill {
     height: 100%;
-    background: #6200ea; /* مۆری تۆخ بۆ پڕبوونەوەکە */
+    background: #6200ea;
     border-radius: 10px;
     transition: width 0.5s ease-in-out;
 }
-
-/* دوگمە هەڵواسراوەکان */
-.side-btn {
-    position: absolute;
-    top: 45%;
-    background: #6200ea;
-    border: 2px solid #3a0088;
-    color: white;
-    border-radius: 12px;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    z-index: 10;
-}
-
-.ai-btn { left: 10px; }
-.pen-btn { right: 10px; }
 
 /* ناوەڕۆکی سەرەکی */
 .main-content {
@@ -166,6 +142,35 @@ body {
 }
 
 .big-btn {
-    font-size: 40px; /* وەک وێنەکە گەورەیە */
+    font-size: 40px;
     padding: 20px;
+}
+
+/* دوگمەکانی خوارەوە (AI و وایت بۆرد) */
+.bottom-tools {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 350px;
+    margin-top: 10px;
+}
+
+.side-btn {
+    background: #6200ea;
+    border: 2px solid #3a0088;
+    color: white;
+    border-radius: 15px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transition: transform 0.2s;
+}
+
+.side-btn:active {
+    transform: scale(0.90);
 }
