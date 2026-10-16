@@ -1,0 +1,195 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: url('bgai.jpg') no-repeat center center fixed, #11092a;
+    background-size: cover;
+    color: white;
+    overflow: hidden;
+}
+
+/* بەشی دۆناڵی پێشەکی (Setup Box) */
+.setup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 100;
+}
+
+.setup-box {
+    background-color: #5e00d7; /* مۆری تۆخ ڕێک وەک وێنەکە */
+    width: 85%;
+    max-width: 340px;
+    padding: 40px 25px;
+    border-radius: 35px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ڕیزی پڕکردنەوەی ناو */
+.input-row {
+    background-color: #3f1e73; /* مۆری تاریکتر بۆ ناو خانەکە */
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#ai-name-input {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-family: inherit;
+    outline: none;
+    width: 60%;
+    text-align: right;
+}
+
+#ai-name-input::placeholder {
+    color: #bfa5ff;
+}
+
+.btn-change {
+    background-color: #6a49a8; /* ڕەنگی مۆری ناو گۆڕینی ناو */
+    color: #e5d7ff;
+    font-size: 11px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* دوگمەی Save */
+.save-button {
+    background: linear-gradient(180deg, #7ad136 0%, #3ca82e 100%); /* سەوزی بەهێز و کەمێک کاڵ لە سەرەوە ڕێک وەک وێنەکە */
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 14px 0;
+    border-radius: 20px;
+    font-size: 45px; /* فۆنتی گەورەی Save */
+    font-family: system-ui, -apple-system, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(60, 168, 46, 0.4);
+    transition: transform 0.1s ease;
+}
+
+.save-button:active {
+    transform: scale(0.96);
+}
+
+/* -------------------------------------- */
+/* شێوازی مۆبایلی و ڕێکخستنی چات */
+.chat-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.chat-header {
+    background: rgba(94, 0, 215, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.header-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ai-avatar {
+    font-size: 24px;
+}
+
+.ai-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message {
+    max-width: 75%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.message.ai {
+    background-color: rgba(94, 0, 215, 0.5);
+    align-self: flex-start;
+    border-bottom-right-radius: 4px;
+}
+
+.message.user {
+    background-color: #0a84ff;
+    align-self: flex-end;
+    border-bottom-left-radius: 4px;
+}
+
+.chat-input-area {
+    display: flex;
+    padding: 15px;
+    background: rgba(20, 10, 40, 0.95);
+    gap: 10px;
+}
+
+#message-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 10px 15px;
+    color: white;
+    outline: none;
+    font-size: 15px;
+}
+
+#send-btn {
+    background: #6200ea;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
