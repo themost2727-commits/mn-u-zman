@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ڕێکخستنەکان</title>
+    <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+
+    <!-- نوارەی سەرەوە -->
+    <header class="top-bar">
+        <button class="back-btn" onclick="window.location.href='index.html'">〈 گەڕانەوە</button>
+        <h2 class="page-title">ڕێکخستنەکان ⚙️</h2>
+        <div style="width: 70px;"></div> <!-- بۆ هاوسەنگی -->
+    </header>
+
+    <div class="settings-container">
+        
+        <!-- بەشی زمان -->
+        <div class="setting-group">
+            <h3>زمانی فێربوون</h3>
+            <select id="language-select" class="custom-select">
+                <option value="german">ئەڵمانی 🇩🇪</option>
+                <option value="english">ئینگلیزی 🇬🇧</option>
+                <option value="arabic">عەرەبی 🇸🇦</option>
+            </select>
+        </div>
+
+        <!-- بەشی دەنگ و ئاگادارکردنەوە -->
+        <div class="setting-group">
+            <h3>دەنگ و مۆسیقا</h3>
+            <div class="toggle-row">
+                <span>دەنگی ئامانجەکان (XP)</span>
+                <label class="switch">
+                    <input type="checkbox" id="sound-toggle" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="toggle-row">
+                <span>مۆسیقای باکگراوند</span>
+                <label class="switch">
+                    <input type="checkbox" id="music-toggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- بەشی مەترسیدار (سڕینەوەی داتا) -->
+        <div class="setting-group danger-zone">
+            <h3>ڕێکخستنەوەی هەژمار</h3>
+            <p class="warning-text">ئاگاداربە! بەم کارە هەموو ئاست و خاڵەکانت (XP) دەسڕێنەوە.</p>
+            <button id="reset-btn" class="danger-btn">سڕینەوەی داتاکان</button>
+        </div>
+
+        <button id="save-settings-btn" class="save-btn">پاشەکەوتکردن</button>
+
+    </div>
+
+    <script src="settings.js"></script>
+</body>
+</html>
