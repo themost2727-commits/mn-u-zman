@@ -10,7 +10,7 @@
 
     <!-- نوارەی سەرەوە -->
     <header class="top-bar">
-        <!-- دوگمەی ڕێکخستنەکان (گێڕەکە) بەستراوەتەوە بە settings.html -->
+        <!-- دوگمەی ڕێکخستنەکان -->
         <div class="top-icon settings" onclick="window.location.href='settings.html'" style="cursor: pointer; z-index: 100; position: relative;">⚙️</div>
         
         <div class="left-icons">
@@ -38,10 +38,13 @@
     <!-- ناوەڕۆکی سەرەکی -->
     <main class="main-content">
         
-        <!-- مەتاهەکە (بێ کلیک) -->
+        <!-- مەتاهەکە (بە سیستەمی جووڵەی پڕۆفایلەوە) -->
         <div class="maze-card">
-            <div class="maze-placeholder">
-                <img src="maze.jpg" alt="Maze" style="width: 150px; opacity: 0.8;">
+            <div class="maze-placeholder" style="position: relative; display: inline-block;">
+                <img src="maze.png" alt="Maze" style="width: 150px; opacity: 0.8;">
+                
+                <!-- ئەمە ئەو خاڵە شینەیە کە وەک کەسەکە دەجووڵێت بەناو مەتاهەکەدا -->
+                <div id="maze-player" style="position: absolute; width: 15px; height: 15px; background: #0a84ff; border-radius: 50%; border: 2px solid white; top: 5%; left: 10%; transition: all 1s ease-in-out;"></div>
             </div>
             <p class="maze-text">کاتێک دەڕێژیت لەم مەیزە کە بگەیت بە ئامانجەکەت</p>
         </div>
@@ -54,12 +57,9 @@
 
         <!-- دوگمەکانی AI و وایت بۆرد لە خوارەوە -->
         <div class="bottom-tools">
-            <!-- دوگمەی AI بەستراوەتەوە بە ai.html -->
             <button class="side-btn ai-btn" onclick="window.location.href='ai.html'">
                 <span>🤖</span>
             </button>
-            
-            <!-- دوگمەی وایتبۆرد بەستراوەتەوە بە whiteboard.html -->
             <button class="side-btn pen-btn" onclick="window.location.href='whiteboard.html'">
                 <span>✍️</span>
             </button>
