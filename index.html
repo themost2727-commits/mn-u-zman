@@ -8,22 +8,20 @@
 </head>
 <body>
 
-    <!-- نوارەی سەرەوە (بە پێچەوانەی ئاراستەی عەرەبی/کوردی دامانناوە بۆ ئەوەی وەک وێنەکەی لێبێت) -->
+    <!-- نوارەی سەرەوە -->
     <header class="top-bar">
-        <!-- گێڕی ڕێکخستن لە لای ڕاست -->
         <div class="top-icon settings">⚙️</div>
         
-        <!-- ئاڵا و ئاست لە لای چەپ -->
         <div class="left-icons">
-            <div class="top-icon flag" id="lang-flag">🪵</div> <!-- ئاست (سەرەتا دارە) -->
-            <div class="top-icon diamond" id="country-flag">🇩🇪</div> <!-- ئاڵا -->
+            <div class="top-icon diamond" id="lang-flag">💎</div> 
+            <div class="top-icon flag" id="country-flag">🇩🇪</div> 
         </div>
     </header>
 
-    <!-- بەشی پڕۆفایل و XP -->
+    <!-- بەشی پڕۆفایل -->
     <section class="profile-section">
         <div class="profile-pic">
-            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=patrik" alt="وێنەی پڕۆفایل">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=patrik" alt="پڕۆفایل">
         </div>
         <div class="profile-details">
             <h2 class="username">patrik jane</h2>
@@ -36,21 +34,13 @@
         </div>
     </section>
 
-    <!-- دوگمە هەڵواسراوەکانی تەنیشت -->
-    <button class="side-btn ai-btn">
-        <span class="ai-logo">⋈</span>
-    </button>
-    <button class="side-btn pen-btn">
-        <span>✍️</span>
-    </button>
-
-    <!-- بەشی ناوەڕاست (مەتاهە و دوگمەکان) -->
+    <!-- ناوەڕۆکی سەرەکی -->
     <main class="main-content">
+        
         <!-- مەتاهەکە (بێ کلیک) -->
         <div class="maze-card">
-            <!-- لێرەدا دەتوانیت وێنەی مەتاهەکەت دابنێیت -->
             <div class="maze-placeholder">
-                <img src="maze.png" alt="Maze" style="width: 150px; opacity: 0.8;"> <!-- ئەگەر وێنەی مەتاهەت هەیە ناوی بنێ maze.png -->
+                <img src="maze.png" alt="Maze" style="width: 150px; opacity: 0.8;">
             </div>
             <p class="maze-text">کاتێک دەڕێژیت لەم مەیزە کە بگەیت بە ئامانجەکەت</p>
         </div>
@@ -60,6 +50,17 @@
 
         <!-- دوگمەی پلان و ئەرک -->
         <button class="btn-primary">پلان و ئەرکی ڕۆژانەت</button>
+
+        <!-- دوگمەکانی AI و وایت بۆرد لە خوارەوە -->
+        <div class="bottom-tools">
+            <button class="side-btn ai-btn">
+                <span>🤖</span>
+            </button>
+            <button class="side-btn pen-btn">
+                <span>✍️</span>
+            </button>
+        </div>
+
     </main>
 
     <script src="app.js"></script>
